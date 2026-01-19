@@ -1,0 +1,8 @@
+persistence:
+  defaultClassReplicaCount: 1
+
+defaultSettings:
+  defaultReplicaCount: 1
+
+  storageMinimalAvailablePercentage: 10
+  storageOverProvisioningPercentage: 200
