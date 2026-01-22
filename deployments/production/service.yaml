@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cnf-app-service
+  namespace: production
+spec:
+  type: ClusterIP
+  selector:
+    app: cnf-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
