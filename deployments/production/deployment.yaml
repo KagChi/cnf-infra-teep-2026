@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: cnf-app
-          image: ghcr.io/kagchi/cnf-app-teep-2026:main-1768550636913
+          image: ghcr.io/kagchi/cnf-app-teep-2026:main-1769149475463
           ports:
             - containerPort: 3000
 
