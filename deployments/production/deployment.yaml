@@ -16,10 +16,14 @@ spec:
     metadata:
       labels:
         app: cnf-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000"
     spec:
       containers:
         - name: cnf-app
-          image: ghcr.io/kagchi/cnf-app-teep-2026:main-1769149475463
+          image: ghcr.io/kagchi/cnf-app-teep-2026:main-1769960546339
           ports:
             - containerPort: 3000
 
