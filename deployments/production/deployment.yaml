@@ -23,10 +23,9 @@ spec:
     spec:
       containers:
         - name: cnf-app
-          image: ghcr.io/kagchi/cnf-app-teep-2026:main-1769149475463 # {"$imagepolicy": "production:cnf-app"}
+          image: ghcr.io/kagchi/cnf-app-teep-2026:main-1769960546339 # {"$imagepolicy": "production:cnf-app"}
           ports:
             - containerPort: 3000
-
           livenessProbe:
             httpGet:
               path: /health/live
@@ -35,7 +34,6 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 2
             failureThreshold: 3
-
           readinessProbe:
             httpGet:
               path: /health/ready
@@ -44,7 +42,6 @@ spec:
             periodSeconds: 5
             timeoutSeconds: 2
             failureThreshold: 3
-
           startupProbe:
             httpGet:
               path: /health/live
