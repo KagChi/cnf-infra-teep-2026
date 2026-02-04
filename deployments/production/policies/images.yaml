@@ -6,8 +6,6 @@ metadata:
 spec:
   image: ghcr.io/kagchi/cnf-app-teep-2026
   interval: 1m
-  secretRef:
-    name: image-pull-secrets
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
