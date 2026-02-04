@@ -1,0 +1,33 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: image-auto-update
+  namespace: production
+spec:
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        name: kagchi
+        email: me@kagchi.my.id
+      messageTemplate: |
+        chore(prod-production): update image tags
+
+        Files:
+        {{ range $filename, $_ := .Changed.FileChanges -}}
+        - {{ $filename }}
+        {{ end -}}
+
+        Objects:
+        {{ range $resource, $changes := .Changed.Objects -}}
+        - {{ $resource.Kind | lower }} {{ $resource.Name | lower }}
+        {{ end -}}
+        Changes:
+        {{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}

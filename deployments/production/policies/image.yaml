@@ -1,0 +1,26 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: cnf-app
+  namespace: production
+spec:
+  image: ghcr.io/kagchi/cnf-app-teep-2026
+  interval: 1m
+  secretRef:
+    name: image-pull-secrets
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: cnf-app
+  namespace: production
+spec:
+  imageRepositoryRef:
+    name: cnf-app
+  filterTags:
+    pattern: "^main-(\\d+)$"
+    extract: "$1"
+  policy:
+    numerical:
+      order: asc
